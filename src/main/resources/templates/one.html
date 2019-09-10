@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>One Experiment</title>
-	<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=.5, minimum-scale=.5 user-scalable=no"/>
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<!--Bootsrap 4 CDN-->
@@ -15,13 +17,14 @@
 	<link rel="stylesheet" type="text/css" href="./css/one.css">
 </head>
 <body>
+	<button class="btn-lg btn-success" onclick="start()">Start</button>
+	<div id="left-paddle"></div>
+	<div id="right-paddle"></div>
+	<div id="ball"></div>
+		
 
-<div id="ball"></div>
+
 
 <script src="/js/one.js"></script>
-<!-- <script
-        th:with="host=${#request.getServerName()},port=${@environment.getProperty('spring.devtools.livereload.port')}"
-        th:src="@{js/livereload.js(host=${host},port=${port == null}? 35729 : ${port},v=2.2.2)}"
-        th:if="${@environment.getProperty('demos.devtools.livereload.include-js')}"></script> -->
 </body>
 </html>
