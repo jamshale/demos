@@ -22,5 +22,9 @@ public class MainController{
         return "two";
     } 
 
+    @RequestMapping(value="three")
+    public String Three() {
+        return "three";
+    } 
 
 }
