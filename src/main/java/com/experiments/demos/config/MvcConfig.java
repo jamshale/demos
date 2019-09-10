@@ -1,5 +1,6 @@
 package com.experiments.demos.config;
 
+import org.apache.catalina.connector.Connector;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -15,5 +16,14 @@ public class MvcConfig implements WebMvcConfigurer{
         registry.addResourceHandler("/**")
                 .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
     }
+
+
+    private Connector initiateHttpConnector() {
+        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        connector.setScheme("http");
+        connector.setPort(80);
+        return connector;
+      }
+
 
 }
