@@ -1,30 +1,74 @@
-var H = $(document).height()
-var W = $(document).width()
 var steps = 2000;
 
+
 function start(){
+    // initialization
+    var H = $(document).height()
+    var W = $(document).width()
     $('.btn-success').remove();
-    var hRand = Math.random(0,1);
-    var target = H*hRand;
     var leftOrRight = Math.random(0,1);
-    var wDist = W/2;
-    var hDist = target/2;
-    var wInc = wDist/steps;
-    var hInc = hDist/steps;
+    var left;
+    if(leftOrRight>=.5){
+        left = true;
+    }
+    // get target height
+    var position = $('#ball').position();
+    var rightPaddlePos = $('#right-paddle').position();
+    var leftPaddlePos = $('#left-paddle').position();
+    var hRand = Math.random(0,1);
+    var target = H*hRand;    
+    var pDist, pInc, wInc, hInc, wDist, hDist;
+    if(left){
+        pDist = target-leftPaddlePos.top-50;
+        wDist = (W/2)-leftPaddlePos.left;
+    } else {
+        pDist = target-rightPaddlePos.top-50;
+        wDist = (W/2)-leftPaddlePos.left;
+    }
+    hDist = target-position.top-15;
+    wInc = wDist/steps;
+    hInc = hDist/steps;
+    pInc = pDist/steps;
 
     var i = 0;
     var interval = setInterval(function(){
-        var position = $('#ball').position();
-        if(leftOrRight<.5){
-            $("#ball").css({'top': position.top + hInc, 'left': position.left + wInc});
+        position = $('#ball').position();
+        if(left){
+            leftPaddlePos = $('#left-paddle').position();
+            $("#ball").css({'top': position.top + hInc, 'left': position.left - wInc});
+            $('#left-paddle').css('top', leftPaddlePos.top + pInc);
         } else {
-            $("#ball").css({'top': position.top - hInc, 'left': position.left - wInc});
+            rightPaddlePos = $('#right-paddle').position();
+            $("#ball").css({'top': position.top + hInc, 'left': position.left + wInc});
+            $('#right-paddle').css('top', rightPaddlePos.top + pInc);
         }
-        
         i++;
+        // reset --> change direction
         if(i>=steps){
-            clearInterval(interval);
+            H = $(document).height()
+            W = $(document).width()
+            hRand = Math.random(0,1);
+            target = H*hRand;
+            if(left){
+                left = false;
+                rightPaddlePos = $('#right-paddle').position();
+                pDist = target-rightPaddlePos.top-50;
+                wDist = W-(2*(leftPaddlePos.left))+15;
+            } else {
+                left = true;
+                
+                leftPaddlePos = $('#left-paddle').position();
+                pDist = target-leftPaddlePos.top-50;
+                wDist = W-(2*(leftPaddlePos.left));
+            }
+            
+            hDist = target-position.top-15;
+            wInc = wDist/steps;
+            hInc = hDist/steps;
+            pInc = pDist/steps;
+            i = 0;
+            // clearInterval(interval);
         }
-    }, .5);
+    }, .1);
     
 }
