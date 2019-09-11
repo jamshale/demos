@@ -1,3 +1,5 @@
+@media (min-width:1025px) { .container-fluid { width: 50% !important;} }
+
 .col-lg-12{
     margin-top: 50px;
 }
