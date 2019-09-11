@@ -53,7 +53,7 @@ function start(){
                 left = false;
                 rightPaddlePos = $('#right-paddle').position();
                 pDist = target-rightPaddlePos.top-50;
-                wDist = W-(2*(leftPaddlePos.left))+15;
+                wDist = W-(2*(leftPaddlePos.left));
             } else {
                 left = true;
                 
