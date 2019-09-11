@@ -27,4 +27,9 @@ public class MainController{
         return "three";
     } 
 
+    @RequestMapping(value="four")
+    public String Four() {
+        return "four";
+    } 
+
 }
