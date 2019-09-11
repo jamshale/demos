@@ -1,5 +1,5 @@
 var stars = 1000;
-var maxSize = 10;
+var maxSize = 6;
 var moonSize = 100;
 var H = $(document).height();
 var W = $(document).width();
@@ -34,6 +34,7 @@ var moonLoc = Math.random(0,1);
 $('body').append(`<div style="
                             border-radius: 50%;
                             position:absolute;
+                            opacity: .95;
                             background-color:white;
                             top:${(moonLoc*100)/4}%;
                             left:${(moonLoc*100)/4}%;

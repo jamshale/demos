@@ -10,6 +10,10 @@ html,body{
 
 
 .card{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(70, 70, 70);
+    box-shadow: 2px 2px 2px rgb(70, 70, 70);
     top:30%;
     position: absolute;
     z-index: 1;
@@ -17,7 +21,7 @@ html,body{
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
-    background-color: rgba(15, 15, 15, 0.95) !important;
+    background-color: rgba(36, 36, 36, 0.95) !important;
 }
 
 
@@ -63,6 +67,7 @@ input:focus{
     background-color: #3e414d;
     opacity: .8;
     width: 100px;
+    box-shadow: 1px 1px 1px black;
 }
 
 .login-btn:hover{
@@ -75,7 +80,11 @@ input:focus{
 }
 
 .links a{
-    color:#53555c;
+    color:#5f6169;
     margin-left: 4px;
     font-weight:bold;
+}
+
+.forgot a{
+    color:#7d7f8a;
 }
