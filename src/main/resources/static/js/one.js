@@ -1,6 +1,6 @@
 var H = $(document).height()
 var W = $(document).width()
-var steps = 100;
+var steps = 2000;
 
 function start(){
     $('.btn-success').remove();
@@ -12,15 +12,19 @@ function start(){
     var wInc = wDist/steps;
     var hInc = hDist/steps;
 
-    for(var i = 0; i < steps; i++){
+    var i = 0;
+    var interval = setInterval(function(){
+        var position = $('#ball').position();
+        if(leftOrRight<.5){
+            $("#ball").css({'top': position.top + hInc, 'left': position.left + wInc});
+        } else {
+            $("#ball").css({'top': position.top - hInc, 'left': position.left - wInc});
+        }
         
-            var position = $('#ball').position();
-            console.log(position.top)
-            console.log(position.left)
-            $("#ball").parent().css({position: 'relative'});
-            $("#ball").css(`{top: ${position.top + hInc}, left: ${position.left + wInc}, position:'absolute'}`);
-            // $('#ball').css('left', `${position.left + wInc}`)
-            // $('#ball').css('top', `${position.top + hInc}`)
-        
-    }
+        i++;
+        if(i>=steps){
+            clearInterval(interval);
+        }
+    }, .5);
+    
 }
